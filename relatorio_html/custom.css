@@ -1,0 +1,13 @@
+/* Customização */
+
+/* Sombra no título */
+#title-block-header .quarto-title-block>div>h1, #title-block-header .quarto-title-block>div>.h1 {
+    flex-grow: 1;
+    box-shadow: 28px 7px 38px black;
+}
+
+/* Justificar parágrafos */
+p
+{
+text-align: justify;
+}

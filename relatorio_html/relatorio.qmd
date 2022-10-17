@@ -1,0 +1,158 @@
+---
+title: "Meu relatório em Quarto" # Título do relatório
+subtitle: "**Minicurso - R: Relatórios dinâmicos com Quarto**"
+author: "Ariane Hayana" # Autor(a)
+lang: pt # Linguagem em português
+date: "`r format(Sys.Date())`" # Data do relatório
+date-format: short # Formato de data curto: dd/MM/yyyy 
+toc: true # Adiciona um índice no relatório
+format: 
+    html: 
+      css: ["custom.css"] 
+      code-fold: false
+      code-tools: true
+      theme: 
+        light: cosmo
+        dark: vapor # Sugestão: superhero/vapor Mudar o tema do relatório aqui
+title-block-banner: img/fig-1.jpeg # Substituir imagem aqui
+execute:
+  warning: false
+  message: false
+reference-location: margin
+citation-location: margin
+bibliography: references.bib
+params:
+  dataset: "iris" # Parâmetros aplicável em todo o documento
+---
+
+
+## Conjunto de dados: Iris
+
+O conjunto de dados consiste em 50 amostras de cada uma das três espécies de *Iris* ( *Iris setosa*, *Iris virginica* e *Iris versicolor*). Quatro variáveis foram medidas em cada amostra: o comprimento e a largura das sépalas e pétalas, em centímetros.
+
+Fonte: [Wikipédia](https://pt.wikipedia.org/wiki/Conjunto_de_dados_flor_Iris)
+
+Os dados podem ser consultados na guia *Tabela*, bem como as imagens das flores:
+
+::: panel-tabset
+## Tabela
+
+```{r}
+library(DT)
+iris |> 
+  datatable()
+```
+
+## Setosa
+
+![Iris setosa](img/setosa.png){fig-align="center" width="300"}
+
+## Versicolor
+
+![Iris versicolor](img/versicolor.png){fig-align="center" width="304"}
+
+## Virginica
+
+![Iris virginica](img/virginica.png){fig-align="center" width="300"}
+:::
+
+### Inserindo código do R em linha de texto
+
+Você pode automatizar a apresentação de seus resultados no texto:
+
+> O *dataset* `r params$dataset` tem `r ncol(iris)` colunas e `r nrow(iris)` linhas. As variáveis do *dataset* são *`r names(iris)`*.
+
+### Visualizações
+
+Podemos gerar uma matriz de gráficos de dispersão interativa usando a biblioteca `JavaScript D3` do pacote `pairsD3` [@pairsD3].
+
+```{r}
+#| fig-cap: "Matriz interativa - Iris"
+#| code-fold: true
+
+library(pairsD3)
+pairsD3(iris[,1:4], group=iris[,5])
+```
+
+```{r}
+#| fig-width: 5
+#| fig-height: 3
+#| fig-align: "center"
+#| fig-cap: "Boxplot estático."
+
+library(ggplot2)
+plot <- ggplot(iris, 
+  aes(x = Species,
+      y =  Sepal.Length)) + 
+  geom_boxplot(aes(fill = Species)) +
+  labs(caption = "Elaborado por: Ariane Hayana") +
+  xlab("Espécies") + 
+  ylab("Sepal Length") + 
+  theme_grey();plot
+```
+
+```{r}
+#| fig-width: 5
+#| fig-height: 3
+#| fig-cap: "Boxplot dinâmico."
+
+plotly::ggplotly(plot)
+```
+
+<hr>
+
+### Universidade Federal do Paraná (UFPR)
+
+![](img/logo.jpg){fig-align="center" width="200"}
+
+A Universidade Federal do Paraná (UFPR) é a mais antiga instituição de ensino com concepção de universidade do Brasil, fundada em 19 de dezembro de 1912, inicialmente com o nome de Universidade do Paraná.
+
+Atualmente as instalações da universidade estão distribuídas entre os diversos campi de Curitiba e de outras cidades do Paraná. A instituição oferta cursos de graduação, sendo cursos de licenciatura, bacharelado, tecnólogo, de mestrado, de doutorado, de especialização lato sensu, além de residências médicas, cursos técnicos e à distância. [^1]
+
+[^1]: Texto retirado do [Wikipédia](https://pt.wikipedia.org/wiki/Universidade_Federal_do_Paran%C3%A1 "Wikipédia - UFPR"). Acesso em 12 out. 2022.
+
+## Vídeos no relatório Quarto
+
+::: callout-warning
+# Necessário instalar Quarto v1.2
+
+O suporte para vídeos é um recurso do Quarto v1.2. Se você quiser usar esse recurso, faça o download e instale o Quarto v1.2 antes de continuar.
+
+Instale a versão de pré-lançamento do Quarto [aqui](https://quarto.org/docs/download/prerelease.html).
+:::
+
+Para inserir vídeos, após feita as instalações necessárias, basta inserir o link do Youtube na sintaxe a seguir:
+
+``` {.default shortcodes="false"}
+{{< video https://www.youtube.com/watch?v=Jg7BGfeJbIQ&t=603s >}}
+```
+
+::: column-margin
+Vídeo retirado do Youtube do [PET-Estatística](https://www.youtube.com/petestatisticaufpr)
+
+[![](img/fig-22.png){fig-align="center"}](https://www.youtube.com/petestatisticaufpr)
+:::
+
+O resultado será:
+
+<details>
+
+{{< video https://www.youtube.com/watch?v=Jg7BGfeJbIQ&t=603s >}}
+
+</details>
+
+Para alterar o tamanho do vídeo, basta inserir `width="xx"` (largura) `height="xx"` (altura), como no exemplo:
+
+``` {.default shortcodes="false"}
+{{< video https://www.youtube.com/watch?v=Jg7BGfeJbIQ&t=603s width="400" height="300" >}}
+```
+
+::: column-margin
+Para mais detalhes sobre a utilização de vídeos, clique [aqui](https://quarto.org/docs/authoring/videos.html).
+:::
+
+<details>
+
+{{< video https://www.youtube.com/watch?v=Jg7BGfeJbIQ&t=603s width="400" height="300" >}}
+
+</details>
