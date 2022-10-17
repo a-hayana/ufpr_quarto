@@ -25,7 +25,6 @@ params:
   dataset: "iris" # Parâmetros aplicável em todo o documento
 ---
 
-
 ## Conjunto de dados: Iris
 
 O conjunto de dados consiste em 50 amostras de cada uma das três espécies de *Iris* ( *Iris setosa*, *Iris virginica* e *Iris versicolor*). Quatro variáveis foram medidas em cada amostra: o comprimento e a largura das sépalas e pétalas, em centímetros.
