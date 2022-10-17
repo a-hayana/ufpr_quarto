@@ -12,7 +12,7 @@ Material do minicurso apresentado por Ariane Hayana na Semana Acadêmica do Curs
 
 #### Códigos
 
-- Exemplo inicial:
+- Exemplo inicial (pasta): https://github.com/a-hayana/ufpr_quarto/tree/master/exemplo_inicial
 
 - Exemplo de Relatório em html: https://github.com/a-hayana/ufpr_quarto/blob/master/relatorio_html/relatorio.qmd
 
