@@ -14,9 +14,9 @@ Material do minicurso apresentado por Ariane Hayana na Semana Acadêmica do Curs
 
 - Exemplo inicial:
 
-- Exemplo de Relatório em html:
+- Exemplo de Relatório em html: https://github.com/a-hayana/ufpr_quarto/blob/master/relatorio_html/relatorio.qmd
 
-- Exemplo de Relatório em pdf:
+- Exemplo de Relatório em pdf: https://github.com/a-hayana/ufpr_quarto/blob/master/relatorio_pdf/meu_doc_pdf.qmd
 
 <br>
 
